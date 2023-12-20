@@ -1,0 +1,14 @@
+{
+  "name": "allegrolokalnie_e2e_tests",
+  "version": "1.0.0",
+  "description": "practice test automation on allegrolokalnie",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dawid Gałęziewski | Rafał Błaszczuk",
+  "license": "ISC",
+  "dependencies": {
+    "@playwright/test": "^1.40.1"
+  }
+}
