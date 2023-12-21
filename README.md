@@ -7,4 +7,4 @@ https://allegrolokalnie.pl
 npm install
 
 2. Run tests
-npx playrigtht test
+npx playwright test
