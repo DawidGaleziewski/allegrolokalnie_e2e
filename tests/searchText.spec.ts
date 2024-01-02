@@ -4,32 +4,30 @@ test.only('placeholder in input still says "czego szukasz?"', async ({ page }) =
     // Przejdź do strony Allegro Lokalnie
     await page.goto('https://allegrolokalnie.pl');
 
-    //Klikniecie pop up - zgody
-
+    // Oczekiwanie na pojawienie się popup zgody
     const popupPromise = page.waitForSelector('[data-testid="accept_home_view_action"]');
     const popup = await popupPromise;
-    //Znajdz przycisk ok zgód
-    const acceptButton = await page.$('[data-testid="accept_home_view_action"]');
-    
-    await acceptButton.click();
 
-    // Znajdź search bar za pomocą selektora id
-    const searchBar = await page.$('#suggests-search');
+    // Jeśli popup pojawia się, kliknij przycisk zgody
+    if (popup) {
+        const acceptButton = await page.$('[data-testid="accept_home_view_action"]');
+        await acceptButton.click();
+    }
+
+    // Oczekiwanie na pojawienie się search bar
+    const searchBar = await page.waitForSelector('#suggests-search');
 
     // Sprawdź, czy search bar został znaleziony
     expect(searchBar).toBeTruthy();
 
-    //wpisanie tekstu do search bar
+    // Wpisanie tekstu do search bar i naciśnięcie klawisza Enter
     await searchBar.fill('Ps5');
+    await searchBar.press('Enter');
 
-    // Znajdź przycisk wyszukaj za pomocą pełnego selektora
-    const searchButton = await page.$('[data-testid="header-search-submit__button"]');
+    // Oczekiwanie na zakończenie aktywności sieciowej
+    await page.waitForLoadState('networkidle');
 
-    // Sprawdź, czy przycisk wyszukaj został znaleziony
-    expect(searchButton)?.toBeTruthy();
-
-    // Kliknij przycisk wyszukaj !!!! psuje test
-    await searchButton?.click();
-    await page.keyboard.press('Enter');
-   // await searchButton.click();
+    // Oczekiwanie na widoczność wyników wyszukiwania
+    const searchResults = await page.waitForSelector('[data-testid="search-results"]');
+    expect(searchResults).toBeTruthy();
 });

@@ -9,6 +9,7 @@
   "author": "Dawid Gałęziewski | Rafał Błaszczuk",
   "license": "ISC",
   "dependencies": {
-    "@playwright/test": "^1.40.1"
+    "@playwright/test": "^1.40.1",
+    "chromium": "^3.0.3"
   }
 }
