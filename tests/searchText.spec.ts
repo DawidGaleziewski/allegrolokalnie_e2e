@@ -4,6 +4,12 @@ test.only('placeholder in input still says "czego szukasz?"', async ({ page }) =
     // Przejdź do strony Allegro Lokalnie
     await page.goto('https://allegrolokalnie.pl');
 
+    //Znajdz przycisk ok zgód
+    const acceptButton = await page.$('[data-testid="accept_home_view_action"]');
+
+    //Klikniecie pop up - zgody
+    await acceptButton.click();
+
     // Znajdź search bar za pomocą selektora id
     const searchBar = await page.$('#suggests-search');
 
@@ -14,11 +20,12 @@ test.only('placeholder in input still says "czego szukasz?"', async ({ page }) =
     await searchBar.fill('Ps5');
 
     // Znajdź przycisk wyszukaj za pomocą pełnego selektora
-    const searchButton = await page.$('#masthead > div > div.mlc-masthead__search > div > form > div > div.mlc-search-form__city-wrapper > button > svg');
+    const searchButton = await page.$('[data-testid="header-search-submit__button"]');
 
     // Sprawdź, czy przycisk wyszukaj został znaleziony
-    expect(searchButton).toBeTruthy();
+    expect(searchButton)?.toBeTruthy();
 
-    // Kliknij przycisk wyszukaj
-    await searchButton.click();
+    // Kliknij przycisk wyszukaj !!!! psuje test
+    await page.keyboard.press('Enter');
+   // await searchButton.click();
 });
