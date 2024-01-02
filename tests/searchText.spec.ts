@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.only('placeholder in input still says "czego szukasz?"', async ({ page }) => {
+test.only('able to go to search for ps5 items', async ({ page }) => {
     // Przejdź do strony Allegro Lokalnie
     await page.goto('https://allegrolokalnie.pl');
 
@@ -11,7 +11,7 @@ test.only('placeholder in input still says "czego szukasz?"', async ({ page }) =
     //Znajdz przycisk ok zgód
     const acceptButton = await page.$('[data-testid="accept_home_view_action"]');
     
-    await acceptButton.click();
+    await acceptButton?.click();
 
     // Znajdź search bar za pomocą selektora id
     const searchBar = await page.$('#suggests-search');
@@ -20,7 +20,7 @@ test.only('placeholder in input still says "czego szukasz?"', async ({ page }) =
     expect(searchBar).toBeTruthy();
 
     //wpisanie tekstu do search bar
-    await searchBar.fill('Ps5');
+    await searchBar?.fill('Ps5');
 
     // Znajdź przycisk wyszukaj za pomocą pełnego selektora
     const searchButton = await page.$('[data-testid="header-search-submit__button"]');
