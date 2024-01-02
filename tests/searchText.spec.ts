@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('placeholder in input still says "czego szukasz?"', async ({ page }) => {
+test.only('placeholder in input still says "czego szukasz?"', async ({ page }) => {
     // Przejdź do strony Allegro Lokalnie
     await page.goto('https://allegrolokalnie.pl');
 
@@ -11,7 +11,14 @@ test('placeholder in input still says "czego szukasz?"', async ({ page }) => {
     expect(searchBar).toBeTruthy();
 
     //wpisanie tekstu do search bar
-    
+    await searchBar.fill('Ps5');
 
-    //klikniecie wyszukaj
+    // Znajdź przycisk wyszukaj za pomocą pełnego selektora
+    const searchButton = await page.$('#masthead > div > div.mlc-masthead__search > div > form > div > div.mlc-search-form__city-wrapper > button > svg');
+
+    // Sprawdź, czy przycisk wyszukaj został znaleziony
+    expect(searchButton).toBeTruthy();
+
+    // Kliknij przycisk wyszukaj
+    await searchButton.click();
 });
