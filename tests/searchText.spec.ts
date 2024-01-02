@@ -4,10 +4,13 @@ test.only('placeholder in input still says "czego szukasz?"', async ({ page }) =
     // Przejdź do strony Allegro Lokalnie
     await page.goto('https://allegrolokalnie.pl');
 
+    //Klikniecie pop up - zgody
+
+    const popupPromise = page.waitForSelector('[data-testid="accept_home_view_action"]');
+    const popup = await popupPromise;
     //Znajdz przycisk ok zgód
     const acceptButton = await page.$('[data-testid="accept_home_view_action"]');
-
-    //Klikniecie pop up - zgody
+    
     await acceptButton.click();
 
     // Znajdź search bar za pomocą selektora id
@@ -26,6 +29,7 @@ test.only('placeholder in input still says "czego szukasz?"', async ({ page }) =
     expect(searchButton)?.toBeTruthy();
 
     // Kliknij przycisk wyszukaj !!!! psuje test
+    await searchButton?.click();
     await page.keyboard.press('Enter');
    // await searchButton.click();
 });
