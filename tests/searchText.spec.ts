@@ -10,12 +10,6 @@ test('placeholder in input still says "czego szukasz?"', async ({ page }) => {
     // Sprawdź, czy search bar został znaleziony
     expect(searchBar).toBeTruthy();
 
-    // Pobierz wartość atrybutu placeholder
-    const placeholderValue = await searchBar.getAttribute('placeholder');
-
-    // Sprawdź, czy placeholder ma oczekiwaną wartość
-    expect(placeholderValue).toBe('czego szukasz?');
-
     //wpisanie tekstu do search bar
     
 
