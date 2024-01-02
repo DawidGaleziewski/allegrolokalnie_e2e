@@ -1,5 +1,5 @@
 ## goal of the project
-practic test automation on:
+practice test automation on:
 https://allegrolokalnie.pl
 
 ## To run project
