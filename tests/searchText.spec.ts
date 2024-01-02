@@ -1,17 +1,13 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 test.only('able to go to search for ps5 items', async ({ page }) => {
     // Przejdź do strony Allegro Lokalnie
     await page.goto('https://allegrolokalnie.pl');
 
-    //Klikniecie pop up - zgody
-    const popupPromise = await page.waitForSelector('[data-testid="accept_home_view_action"]' ,{ timeout: 1000 });
-    //Znajdz przycisk ok zgód
-    const acceptButton = await page.getByTestId('accept_home_view_action');
-    await acceptButton?.click();
+    await acceptCookiesPopup(page);
 
     // Znajdź search bar za pomocą selektora id
-    const searchBar = await page.$('#suggests-search');
+    const searchBar = await page.getByTestId('header-search__input');
     //wpisanie tekstu do search bar
     await searchBar?.fill('Ps5');
 
@@ -21,7 +17,20 @@ test.only('able to go to search for ps5 items', async ({ page }) => {
     // Kliknij przycisk wyszukaj !!!! psuje test
     await searchButton?.click();
 
-    // find header text
-
+    // find header text and assert it has correct text
     expect(page.getByTestId('mlc-listing-title')).toHaveText('Szukasz Ps5')
 });
+
+
+const acceptCookiesPopup = async (page: Page) => {
+    //Poczekaj na button az się właduje z popupem, max 2sek, jak nie ma go to nie czekaj idź dalej
+    try {
+        const acceptButton = page.getByTestId('accept_home_view_action');
+        await acceptButton.waitFor({timeout: 3000})
+        //Znajdz przycisk ok zgód
+    
+        await acceptButton.click();
+    } catch(e){
+        console.log('waiting for popup timeout')
+    }
+}
