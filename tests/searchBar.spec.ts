@@ -16,5 +16,7 @@ test('placeholder in input still says "czego szukasz?"', async ({ page }) => {
     // Sprawdź, czy placeholder ma oczekiwaną wartość
     expect(placeholderValue).toBe('czego szukasz?');
 
-    //wpisać hasło do wyszukiwania i znaleźć coś
+    //wpisanie tekstu do search bar
+
+    //klikniecie wyszukaj
 });
