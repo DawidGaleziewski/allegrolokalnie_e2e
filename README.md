@@ -1,5 +1,5 @@
 ## goal of the project
-practic test automation on:
+practice test automation on:
 https://allegrolokalnie.pl
 
 ## To run project
@@ -36,3 +36,16 @@ git commit -m 'description of what commit does i.e add new tests'
 
 5. Push changes to remote branch [if this is first time you are pushing this, git will show command how to setup new upstream for this branch]
 git push
+
+
+# How to debug tests
+tldr:
+to run test in debug:
+1. right click next to a line number when a red dot appears on hover and selec "Add breakpoint"
+2. right click next to a test green arrow and select "debug test"
+
+make sure you have vs code + this installed:
+https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright
+
+full instruction:
+https://playwright.dev/docs/debug
