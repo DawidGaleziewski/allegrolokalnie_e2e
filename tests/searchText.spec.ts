@@ -1,6 +1,6 @@
 import { test, expect, Page } from '@playwright/test';
 
-test.only('able to go to search for ps5 items', async ({ page }) => {
+test('able to go to search for ps5 items', async ({ page }) => {
     // Przejdź do strony Allegro Lokalnie
     await page.goto('https://allegrolokalnie.pl');
 
