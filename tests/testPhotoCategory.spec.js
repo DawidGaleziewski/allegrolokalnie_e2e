@@ -21,7 +21,7 @@ test.only('przejście do kategorii fotografia na stronie allegrolokalnie', async
   await expect(page).toHaveText('h1', 'Ogłoszenia lokalne z kategorii Fotografia');
 });
 
-const acceptCookiesPopup = async (page: Page) => {
+const acceptCookiesPopup = async (page) => {
     //Poczekaj na button az się właduje z popupem, max 2sek, jak nie ma go to nie czekaj idź dalej
     try {
         const acceptButton = page.getByTestId('accept_home_view_action');

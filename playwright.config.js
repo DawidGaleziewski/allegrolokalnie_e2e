@@ -1,6 +1,4 @@
-import { PlaywrightTestConfig } from "@playwright/test";
-
-const config: PlaywrightTestConfig = {
+const config = {
     timeout: 60000,
     retries: 0,
     use: {
