@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "practice test automation on allegrolokalnie",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "cypress:open": "cypress open"
+  },
   "author": "Dawid Gałęziewski | Rafał Błaszczuk",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.40.1",
     "@types/node": "^20.10.6"
+  },
+  "dependencies": {
+    "cypress": "^13.6.4"
   }
 }
