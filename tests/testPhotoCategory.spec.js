@@ -2,7 +2,7 @@
 import { test, expect } from '@playwright/test';
 
 // Definiowanie testu
-test.only('przejście do kategorii fotografia na stronie allegrolokalnie', async ({ page }) => {
+test('przejście do kategorii fotografia na stronie allegrolokalnie', async ({ page }) => {
   // Otwieranie strony allegrolokalnie
   await page.goto('https://allegrolokalnie.pl/');
 

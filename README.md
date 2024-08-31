@@ -49,3 +49,11 @@ https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright
 
 full instruction:
 https://playwright.dev/docs/debug
+
+
+
+## how to run cypress:
+use this command it will guide you further:
+```bash
+npm run cypress:open
+```
