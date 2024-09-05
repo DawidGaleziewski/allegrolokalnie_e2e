@@ -21,13 +21,20 @@ test('przejście do kategorii fotografia na stronie allegrolokalnie', async ({ p
     await page.getByLabel('Sortuj od:najnowszychnajtań').selectOption('price-desc');
 
     // Powrot do kategorii "Fotografia"
-    await page.goto('https://allegrolokalnie.pl/oferty/fotografia/akcesoria-fotograficzne-8847');
-    await page.goto('https://allegrolokalnie.pl/oferty/elektronika/fotografia-8845');
+    await page.goto('https://allegrolokalnie.pl/oferty/fotografia/akcesoria-fotograficzne');
+    await page.goto('https://allegrolokalnie.pl/oferty/elektronika/fotografia');
 
     //Sprawdzenie czy akcesorii fotograficznych jest wiecej niz 5000
     const accessoriesCountElement = await page.locator('//categories__category__counter"]').first();
     const accessoriesCount = parseInt(await accessoriesCountElement.textContent());
     expect(accessoriesCount).toBeGreaterThan(5000);
+
+    // jesli jest wiecej pozycji niz 50 to wroc na strone elektronika
+    if(accessoriesCount > 50){
+        await page.goto('https://allegrolokalnie.pl/oferty/elektronika/fotografia-8845');
+    }
+  
+
 
 });
 
