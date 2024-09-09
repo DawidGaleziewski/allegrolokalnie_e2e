@@ -31,10 +31,11 @@ test('przejście do kategorii fotografia na stronie allegrolokalnie', async ({ p
 
     // jesli jest wiecej pozycji niz 50 to wroc na strone elektronika
     if(accessoriesCount > 50){
-        await page.goto('https://allegrolokalnie.pl/oferty/elektronika/fotografia-8845');
+        await page.goto('https://allegrolokalnie.pl/oferty/elektronika/fotografia');
     }
   
-
+    //tutaj bedzie powrot do strony glownej
+    await page.goto('https://allegrolokalnie.pl/');
 
 });
 
