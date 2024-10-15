@@ -8,7 +8,7 @@ test('przejście do kategorii fotografia na stronie allegrolokalnie', async ({ p
 
   await acceptCookiesPopup(page);
 
-  // Klikanie na przycisk "Elektronika"
+  // Klikanie na przycisk "Elektronika" TIMEOUT NA KLIKNIECIU???
   await page.click('text=Elektronika');
 
   // Klikanie na kategorię "Fotografia"

@@ -9,7 +9,7 @@ test('placeholder in input still says "czego szukasz?"', async ({ page }) => {
     // Znajdź search bar za pomocą selektora id
     const searchBar = await page.$('#suggests-search');
 
-    // Sprawdź, czy search bar został znaleziony
+    // Sprawdź, czy search bar został znaleziony PSUJE SIĘ> to be truthy ??
     expect(searchBar).toBeTruthy();
 
     // Pobierz wartość atrybutu placeholder

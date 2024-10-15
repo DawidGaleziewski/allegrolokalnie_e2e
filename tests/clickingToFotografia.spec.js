@@ -14,10 +14,10 @@ test('przejście do kategorii fotografia na stronie allegrolokalnie', async ({ p
     // Klikanie na kategorię "Fotografia"
     await page.getByTestId('category-list').getByText('Fotografia').click();
 
-    // Klikanie na kategorię "Akcesoria fotograficzne"
+    // Klikanie na kategorię "Akcesoria fotograficzne" 
     await page.getByTestId('category-list').getByText('Akcesoria fotograficzne').click();
 
-    // Sortowanie w kategorii "Akcesoria fotograficzne"
+    // Sortowanie w kategorii "Akcesoria fotograficzne" GDZIEŚ TUTAJ WYCHODZI BŁĄD ??
     await page.getByLabel('Sortuj od:najnowszychnajtań').selectOption('price-desc');
 
     // Powrot do kategorii "Fotografia"

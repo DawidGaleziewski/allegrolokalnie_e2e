@@ -14,7 +14,7 @@ test('able to go to search for ps5 items', async ({ page }) => {
     // Znajdź przycisk wyszukaj za pomocą pełnego selektora
     const searchButton = await page.getByTestId('header-search-submit__button');
 
-    // Kliknij przycisk wyszukaj !!!! psuje test
+    // Kliknij przycisk wyszukaj !!!! psuje test błąd lokatora??
     await searchButton?.click();
 
     // find header text and assert it has correct text
