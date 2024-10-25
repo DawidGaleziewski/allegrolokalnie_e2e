@@ -7,17 +7,20 @@ test('placeholder in input still says "czego szukasz?"', async ({ page }) => {
     await page.goto('https://allegrolokalnie.pl');
 
     // Znajdź search bar za pomocą selektora id
-    const searchBar = await page.$('#suggests-search');
+    // Składnia z '$' jest przestarzała, aktualnie lokatorów szuka się używając metod z interfejsu Page
+    const searchBar = await page.getByTestId('header-search__input');
 
     // Sprawdź, czy search bar został znaleziony PSUJE SIĘ> to be truthy ??
-    expect(searchBar).toBeTruthy();
+    /**
+     * toBeTruthy() na lokatorze zwróci true nawet jeśli element nie istnieje, ponieważ lokator to "adres",
+     * pod którym szukamy elementu, któremu przypisaliśmy konkretną wartość.
+     * To jeszcze nie oznacza że element istnieje, dlatego lepiej sprawdzać metodami łapiącymi faktyczny element
+     */
+    await expect(searchBar).toBeVisible();
 
-    // Pobierz wartość atrybutu placeholder
-
-    const placeholderValue = await searchBar?.getAttribute('placeholder');
-
+    // Nie ma potrzeby wyciągać do zmiennej tekstu, który chcemy tylko walidować, można od razu zrobić asercję
     // Sprawdź, czy placeholder ma oczekiwaną wartość
-    expect(placeholderValue).toBe('czego szukasz?');
+    await expect(searchBar).toHaveAttribute('placeholder', 'czego szukasz?');
 
     //wpisanie tekstu do search bar
     

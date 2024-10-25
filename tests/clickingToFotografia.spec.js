@@ -18,14 +18,17 @@ test('przejście do kategorii fotografia na stronie allegrolokalnie', async ({ p
     await page.getByTestId('category-list').getByText('Akcesoria fotograficzne').click();
 
     // Sortowanie w kategorii "Akcesoria fotograficzne" GDZIEŚ TUTAJ WYCHODZI BŁĄD ??
-    await page.getByLabel('Sortuj od:najnowszychnajtań').selectOption('price-desc');
+    await page.getByLabel('Sortuj od:').selectOption('price-desc');
 
-    // Powrot do kategorii "Fotografia"
-    await page.goto('https://allegrolokalnie.pl/oferty/fotografia/akcesoria-fotograficzne');
-    await page.goto('https://allegrolokalnie.pl/oferty/elektronika/fotografia');
+    // To jest chyba niepotrzebne?
+    // // Powrot do kategorii "Fotografia"
+    // await page.goto('https://allegrolokalnie.pl/oferty/elektronika/fotografia');
 
+    // Tu poprawiłem lokator, użyłeś formatu xpath ale podałeś klasę elementu tak, jakby był tagiem html - dlatego nie działało
+    // W takim przypadku jak tu, kiedy mamy do wyciągnięcia pojedynczy element i znamy jego klasę, lepiej użyć css selectora tak jak poniżej :)
+    // Tutaj do poprawy masz asercję, ponieważ nie ma aż tylu zwracanych wyników.
     //Sprawdzenie czy akcesorii fotograficznych jest wiecej niz 5000
-    const accessoriesCountElement = await page.locator('//categories__category__counter"]').first();
+    const accessoriesCountElement = await page.locator('.categories__category__counter').first();
     const accessoriesCount = parseInt(await accessoriesCountElement.textContent());
     expect(accessoriesCount).toBeGreaterThan(5000);
 
